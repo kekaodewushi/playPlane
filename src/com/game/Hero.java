@@ -160,9 +160,9 @@ public class Hero extends FlyingObject {
     }
 
     /**
-     * 碰撞算法
+     * 碰撞敌人算法
      */
-    public boolean hit(FlyingObject other) {
+    public boolean hitHero(FlyingObject other) {
 
         int x1 = other.x - this.width / 2;                 //x坐标最小距离
         int x2 = other.x + this.width / 2 + other.width;   //x坐标最大距离
@@ -173,5 +173,14 @@ public class Hero extends FlyingObject {
         int heroy = this.y + this.height / 2;              //英雄机y坐标中心点距离
 
         return herox > x1 && herox < x2 && heroy > y1 && heroy < y2;   //区间范围内为撞上了
+    }
+    /**
+     * 敌人逃脱算法
+     */
+    public boolean hitWall(FlyingObject other) {
+
+        int y2 = other.y + this.height / 2 + other.height; //y坐标最大距离
+
+        return 654 <= y2;   //区间范围内为撞上了
     }
 }

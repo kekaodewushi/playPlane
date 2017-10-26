@@ -151,7 +151,7 @@ public class ShootGame extends JPanel {
     }
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("吃鸡打飞机");
+        JFrame frame = new JFrame("范昂吃鸡打飞机");
         ShootGame game = new ShootGame(); // 面板对象
         frame.add(game); // 将面板添加到JFrame中
         frame.setSize(WIDTH, HEIGHT); // 设置大小
@@ -340,7 +340,7 @@ public class ShootGame extends JPanel {
         for (int i = 0; i < this.flyings.length; ++i) {
             int index = -1;
             FlyingObject obj = this.flyings[i];
-            if (this.hero.hit(obj)) {
+            if (this.hero.hitHero(obj)||this.hero.hitWall(obj)) {
                 this.hero.subtractLife();
                 this.hero.setDoubleFire(0);
                 this.hero.setSpeedFire(30);
@@ -407,10 +407,10 @@ public class ShootGame extends JPanel {
                         MSG="超级来袭~~";
                         hero.addDoubleFire(Award.SPEED_FOUR_FIRE); // 设置多倍火力
                         break;
-                    case Award.SPEED_FIVE_FIRE:
+                   /* case Award.SPEED_FIVE_FIRE:
                         MSG="装弹冷却~~";
                         hero.addDoubleFire(Award.SPEED_FIVE_FIRE); // 设置多倍火力
-                        break;
+                        break;*/
                     case Award.LIFE:
                         hero.addLife(); // 设置加命
                         break;
